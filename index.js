@@ -216,56 +216,56 @@ async function runit() {
         ]);
         console.log(results);
 
-        const config = {
-            headers: { 'Authorization': 'Token c27328405277000d34a3213bbcb2aad906df09e9' }
-        }
+        // const config = {
+        //     headers: { 'Authorization': 'Token c27328405277000d34a3213bbcb2aad906df09e9' }
+        // }
     
-        // let res = await axios(config)
-        // const header = headers {
-        //    Authorization : `Token c27328405277000d34a3213bbcb2aad906df09e9`}
-
-        const response  = await axios.get(`https://api.github.com/users/${results.username}`, config)
+        // const response  = await axios.get(`https://api.github.com/users/${results.username}`, config)
+            
+    
+        const response  = await axios.get(`https://api.github.com/users/${results.username}`)
             
                             const avatar = JSON.stringify(`${response.data.avatar_url}`).slice(1, -1);
                             // console.log(avatar)
                             console.log(response.data);
         
-        // const headers = { 
-        //     "Authorization" : `Token c27328405277000d34a3213bbcb2aad906df09e9`
-        // }
-        // const email  = await axios.get(`https://api.github.com/users/:${results.username}/event`)
-        // console.log(email)
-        // console.log(email.data.payload.commits.author.email);
        let badgeURL = `https://img.shields.io/github/followers/${results.username}?label=Foillow&style=social`
-
-        let readMeInfo =
-     ` # ${results.project}\n
+const readMeInfo = ` # ${results.project}\n`+ ` ## Description\n${results.description}\n ## Badges\n ![GitHub followers](`+`https://img.shields.io/github/followers/${results.username}?label=Foillow&style=social`+`\n
+## Usage\n
+${results.test}\n
+## Test\n
+${results.test}\n
+## Contributing\n
+Feel free to contact us via ![email]() for contribution request.\n
+## License\n
+# [${results.licenseList}](${results.link})\n`;
+    //     let readMeInfo =
+    //  ` # ${results.project}
+    //  \n
+    //     ## Description\n
+    //     ${results.description}\n
         
-        ## Description\n
-        ${results.description}\n
+    //     ## Badges\n
+    //   ![GitHub followers](${badgeURL})\n
         
-        ## Badges\n
-      ![GitHub followers](${badgeURL})\n
+    //     ## Usage\n
+    //     ${results.test}\n
         
-        ## Usage\n
-        ${results.test}\n
+    //     ## Test\n
+    //     ${results.test}\n
         
-        ## Test\n
-        ${results.test}\n
+    //     ## Contributing\n
+    //     Feel free to contact us via ![email](${response.data.email}) for contribution request.\n
         
-        ## Contributing\n
-        Feel free to contact us via ![email](${response.data.email}) for contribution request.\n
+    //     ## License\n
+    //     # ![${results.licenseList}](${results.link})\n
         
-        ## License\n
-        # ![${results.licenseList}](${results.link})\n
-        
-        ## Author\n
-        ![ProfileImage](${avatar})`;
+    //     ## Author\n
+    //     ![ProfileImage](${avatar})`;
 
       await writeFileAsync('README.md', readMeInfo);
      console.log('Your README.md saved!');
                             
-        
     }
     catch (err) {
         console.log(err)
