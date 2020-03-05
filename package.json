@@ -11,7 +11,8 @@
     "node": "^13.8.0",
     "pdf2html": "^2.5.0",
     "phantom": "^6.3.0",
-    "util": "^0.12.2"
+    "util": "^0.12.2",
+    "website-scraper": "^4.2.0"
   },
   "devDependencies": {},
   "scripts": {
